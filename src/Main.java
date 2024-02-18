@@ -1,16 +1,22 @@
+import Heroes.*;
+
 public class Main {
     public static void main(String[] args) {
+        Peasant peasant = new Peasant("Крестьянин");
+        Spearman spearman = new Spearman("Копейщик");
+        BaseChar rogue = new Rogue("Разбойник");
+        BaseChar crossbowman = new Crossbowman("Арбалетчик");
+        BaseChar sniper = new Sniper("Снайпер");
+        BaseChar mage = new Mage("Маг");
+        BaseChar monk = new Monk("Монах");
 
-        Hero hero1 = new Peasant("Крестьянин", 10, "Вилы", 5, 5);
-        Hero hero2 = new Rogue("Разбойник", 15, "Кинжалы", 10, 10);
-        Hero hero3 = new Sniper("Дедшот", 10, "Винтовка", 10, 15);
-        Hero hero4 = new Mage("Джайна", 10, "Посох", 13, 18);
-        Hero hero5 = new Spearman("Копейщик", 10, "Копье", 12, 10);
-        Hero hero6 = new Crossbowman("Арбалетчик", 10, "Арбалет", 10, 15);
-        Hero hero7 = new Monk("Монах", 15, "Посох", 15, 20, 17);
-        System.out.println(hero1 + "\n" + hero2 + "\n" + hero3 + "\n"
-        + hero4 + "\n" + hero5 + "\n" + hero6 + "\n" + hero7);
-
+        System.out.println(peasant.toString());
+        System.out.println(spearman.toString());
+        System.out.println(rogue.toString());
+        System.out.println(crossbowman.toString());
+        System.out.println(sniper.toString());
+        System.out.println(mage.toString());
+        System.out.println(monk.toString());
     }
 
 }
