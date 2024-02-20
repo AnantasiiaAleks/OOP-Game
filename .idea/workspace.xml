@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b27831d7-fe68-4164-812e-0a8fe8641e05" name="Changes" comment="OOP-Game - all Classes (fix)">
-      <change afterPath="$PROJECT_DIR$/src/Utilites/Names.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utilites/Position.java" afterDir="false" />
+    <list default="true" id="b27831d7-fe68-4164-812e-0a8fe8641e05" name="Changes" comment="OOP-Game - added: coords, distanse, teams">
+      <change afterPath="$PROJECT_DIR$/src/Utilites/Step.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/BaseChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/BaseChar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Heroes/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Mage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Heroes/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Monk.java" afterDir="false" />
@@ -17,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/src/Heroes/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Sniper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Heroes/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Spearman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utilites/BaseChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/BaseChar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +27,7 @@
       <list>
         <option value="Class" />
         <option value="Enum" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -114,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708289502156</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="OOP-Game - added: coords, distanse, teams">
+      <option name="closed" value="true" />
+      <created>1708433455659</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708433455659</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -122,6 +130,7 @@
     <MESSAGE value="New Project - Game - Start2" />
     <MESSAGE value="New Project - Game - all Classes" />
     <MESSAGE value="OOP-Game - all Classes (fix)" />
-    <option name="LAST_COMMIT_MESSAGE" value="OOP-Game - all Classes (fix)" />
+    <MESSAGE value="OOP-Game - added: coords, distanse, teams" />
+    <option name="LAST_COMMIT_MESSAGE" value="OOP-Game - added: coords, distanse, teams" />
   </component>
 </project>

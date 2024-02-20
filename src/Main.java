@@ -1,9 +1,7 @@
 import Heroes.*;
 import Utilites.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -66,33 +64,21 @@ public class Main {
             }
         }
 
-        System.out.println("Team1:");
-        for (BaseChar tm: team1) {
-            System.out.println(tm.toString());
+        Collections.sort(team1);
+        Collections.sort(team2);
+        Queue<BaseChar> round = new ArrayDeque<>();
+        for (BaseChar tm1: team1) {
+            for (BaseChar tm2: team2) {
+                round.add(tm1);
+                round.add(tm2);
+            }
         }
-        System.out.println("Team2:");
-        for (BaseChar tm: team2) {
-            System.out.println(tm.toString());
+        while(!round.isEmpty()) {
+            System.out.println("Атакует команда 1");
+            round.poll().step(team2);
+            System.out.println("Атакует команда 2");
+            round.poll().step(team1);
         }
-        System.out.println("____Nearest target____");
-        System.out.println(team1.get(0).nearestTarget(team2));
-
-
-//        Peasant peasant = new Peasant(getName(), 0, 9);
-//        Spearman spearman = new Spearman("Копейщик");
-//        BaseChar rogue = new Rogue("Разбойник");
-//        BaseChar crossbowman = new Crossbowman("Арбалетчик");
-//        BaseChar sniper = new Sniper("Снайпер");
-//        BaseChar mage = new Mage("Маг");
-//        BaseChar monk = new Monk("Монах");
-
-//        System.out.println(peasant.toString());
-//        System.out.println(spearman.toString());
-//        System.out.println(rogue.toString());
-//        System.out.println(crossbowman.toString());
-//        System.out.println(sniper.toString());
-//        System.out.println(mage.toString());
-//        System.out.println(monk.toString());
     }
 
     private static String getName(){
