@@ -8,6 +8,7 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     protected static Random r = new Random();
     protected String name;
     protected int health;
+    protected int maxHealth;
     protected int strength;
     protected int aqility;
     protected int stamina;
@@ -15,9 +16,10 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     public Position position;
     protected int initiative;
 
-    public BaseChar(String name, int health, int strength, int aqility, int stamina, boolean alive, int x, int y, int initiative) {
+    public BaseChar(String name, int health, int maxHealth, int strength, int aqility, int stamina, boolean alive, int x, int y, int initiative) {
         this.name = name;
         this.health = health;
+        this.maxHealth = maxHealth;
         this.strength = strength;
         this.aqility = aqility;
         this.stamina = stamina;
@@ -29,6 +31,7 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     public BaseChar(String name, int x, int y, int initiative) {
         this.name = name;
         this.health = 100;
+        this.maxHealth = 100;
         this.strength = 20;
         this.aqility = 20;
         this.stamina = 50;
@@ -38,12 +41,13 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     }
     @Override
     public String toString() {
-        return "Class " + this.getClass().getSimpleName() +
-                " name: " + name + ", health: " + health +
-                ", position: (" + position.getX() + ", " + position.getY() + ").";
+        return String.format("Class %s name: %s, health: %d, position: (%d, %d), initiative: %d",
+                this.getClass().getSimpleName(), this.getName(), this.getHealth(), position.getX(),
+                position.getY(), this.getInitiative());
     }
     public String getInfo() {
-        return "Class " + this.getClass().getSimpleName();
+        return "Class " + this.getClass().getSimpleName() + " " + this.getName() +
+                ", health:" + this.getHealth() + "/" + this.getMaxHealth();
     }
 
     public BaseChar nearestTarget(ArrayList<BaseChar> enemys) {
@@ -68,8 +72,10 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
             return false;
         }
     }
-    public void getHealing(int healthPoints) {
-        health += healthPoints;
+    public void getDamage(int damage) {
+        health -= damage;
+        if (health <= 0) { this.setHealth(0); isDead(0); }
+        if (health > maxHealth) { health = maxHealth; }
     }
     public String getName() {
         return name;
@@ -79,11 +85,15 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     }
     public  int getHealth() {return health;}
 
+    public int getMaxHealth() {return maxHealth;}
+
     public void setHealth(int health) {this.health = health;}
 
     public int getStamina() { return stamina; }
 
-    @Override
+    public int getInitiative() {return initiative; }
+
+        @Override
     public int compareTo(BaseChar o) {
         if (this.initiative > o.initiative)
             return -1;

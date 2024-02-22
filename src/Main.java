@@ -64,21 +64,32 @@ public class Main {
             }
         }
 
-        Collections.sort(team1);
-        Collections.sort(team2);
-        Queue<BaseChar> round = new ArrayDeque<>();
-        for (BaseChar tm1: team1) {
-            for (BaseChar tm2: team2) {
-                round.add(tm1);
-                round.add(tm2);
-            }
-        }
-        while(!round.isEmpty()) {
-            System.out.println("Атакует команда 1");
-            round.poll().step(team2);
-            System.out.println("Атакует команда 2");
-            round.poll().step(team1);
-        }
+        //Реализация сортировки по инициативе:
+
+        List<BaseChar> teamForRound = new ArrayList<>();
+        teamForRound.addAll(team1);
+        teamForRound.addAll(team2);
+        teamForRound.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
+
+        teamForRound.forEach(n -> System.out.println(n.toString()));
+
+//         Попытка реализации боя (бой идет, видно по возгласам, но пока проблема с балансом)
+
+//        Collections.sort(team1);
+//        Collections.sort(team2);
+//        Queue<BaseChar> round = new ArrayDeque<>();
+//        for (BaseChar tm1: team1) {
+//            for (BaseChar tm2: team2) {
+//                round.add(tm1);
+//                round.add(tm2);
+//            }
+//        }
+//        while(!round.isEmpty()) {
+//            System.out.println("Атакует команда 1");
+//            round.poll().step(team2);
+//            System.out.println("Атакует команда 2");
+//            round.poll().step(team1);
+//        }
     }
 
     private static String getName(){
