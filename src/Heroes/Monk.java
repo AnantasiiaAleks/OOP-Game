@@ -5,7 +5,7 @@ import Utilites.BaseChar;
 import java.util.ArrayList;
 
 public class Monk extends BaseChar {
-    private int mana = 50;
+    private int mana = 30;
     private int runePower = 100;
 
 
@@ -15,27 +15,16 @@ public class Monk extends BaseChar {
     }
 
     @Override
-    public void step(ArrayList<BaseChar> enemys) {
-        if (Monk.this.isDead(health)) {
-            System.out.println(this.getInfo() + " умер.");
-            System.out.println("--------------------");
-        } else if (Monk.this.getMana() <= 0) {
-            System.out.println(this.getInfo() + ": мало маны.");
-            System.out.println("--------------------");
-        } else {
-            BaseChar target = Monk.this.nearestTarget(enemys);
-            System.out.println(this.getInfo() + ": Цель найдена - " + target.getInfo());
-            attack(target);
-            System.out.println(this.getInfo() + ": вынос мозга для " + target.getInfo() + "!");
-            System.out.println("--------------------");
-        }
+    public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
+        if (isDead(health) || getMana() <= 0) return;
+        attack(nearestTarget(enemy));
+        System.out.println("Chakra");
     }
 
     private void attack(BaseChar target) {
-        int damage = target.getHealth() / 5;
-        System.out.println("damage - " + damage);
+        int damage = r.nextInt(5);
+        mana--;
         target.getDamage(damage);
-        this.setMana(this.getMana() - 2);
     }
 
     public int getMana() {return mana;}

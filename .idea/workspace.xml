@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b27831d7-fe68-4164-812e-0a8fe8641e05" name="Changes" comment="OOP-Game - added: interface Step(), attack.&#10;Реализована пошаговая механика (сортировка компаратором по уровню инициативы и объединение команд в очередь)">
+    <list default="true" id="b27831d7-fe68-4164-812e-0a8fe8641e05" name="Changes" comment="OOP-Game - added: interface Step(), attack, compareTo.&#10;(Реализовано объединение команд в один лист и сортировка по уровню инициативы, вывод листа в консоль)&#10;(Закомментирована попытка реализации пошагового боя, но пока несбалансировано: ресурс героя заканчивается раньше, чем кого-то добивают, и есть недоработки с очередностью шага).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Heroes/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Mage.java" afterDir="false" />
@@ -15,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/src/Heroes/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Spearman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utilites/BaseChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/BaseChar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utilites/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utilites/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/Step.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708465560107</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="OOP-Game - added: interface Step(), attack, compareTo.&#10;(Реализовано объединение команд в один лист и сортировка по уровню инициативы, вывод листа в консоль)&#10;(Закомментирована попытка реализации пошагового боя, но пока несбалансировано: ресурс героя заканчивается раньше, чем кого-то добивают, и есть недоработки с очередностью шага).">
+      <option name="closed" value="true" />
+      <created>1708598473018</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708598473018</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -139,6 +149,7 @@
     <MESSAGE value="OOP-Game - all Classes (fix)" />
     <MESSAGE value="OOP-Game - added: coords, distanse, teams" />
     <MESSAGE value="OOP-Game - added: interface Step(), attack.&#10;Реализована пошаговая механика (сортировка компаратором по уровню инициативы и объединение команд в очередь)" />
-    <option name="LAST_COMMIT_MESSAGE" value="OOP-Game - added: interface Step(), attack.&#10;Реализована пошаговая механика (сортировка компаратором по уровню инициативы и объединение команд в очередь)" />
+    <MESSAGE value="OOP-Game - added: interface Step(), attack, compareTo.&#10;(Реализовано объединение команд в один лист и сортировка по уровню инициативы, вывод листа в консоль)&#10;(Закомментирована попытка реализации пошагового боя, но пока несбалансировано: ресурс героя заканчивается раньше, чем кого-то добивают, и есть недоработки с очередностью шага)." />
+    <option name="LAST_COMMIT_MESSAGE" value="OOP-Game - added: interface Step(), attack, compareTo.&#10;(Реализовано объединение команд в один лист и сортировка по уровню инициативы, вывод листа в консоль)&#10;(Закомментирована попытка реализации пошагового боя, но пока несбалансировано: ресурс героя заканчивается раньше, чем кого-то добивают, и есть недоработки с очередностью шага)." />
   </component>
 </project>

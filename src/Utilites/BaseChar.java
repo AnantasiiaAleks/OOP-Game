@@ -1,8 +1,6 @@
 package Utilites;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Random;
+import java.util.*;
 
 public abstract class BaseChar implements Step, Comparable<BaseChar> {
     protected static Random r = new Random();
@@ -51,31 +49,24 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     }
 
     public BaseChar nearestTarget(ArrayList<BaseChar> enemys) {
-        if (enemys.isEmpty()) {
-            return null;
-        }
-        double minDistance = position.getDistance(enemys.get(0));
-        BaseChar nearestTarget = enemys.get(0);
-        for (int i = 0; i < enemys.size(); i++) {
-            if (position.getDistance(enemys.get(i)) < minDistance) {
-                minDistance = position.getDistance(enemys.get(i));
-                nearestTarget = enemys.get(i);
+        BaseChar target = null;
+        double minDistance = 10;
+        for (BaseChar enemy : enemys) {
+            if (position.getDistance(enemy) < minDistance && !enemy.isDead(enemy.getHealth())) {
+                minDistance = position.getDistance(enemy);
+                target = enemy;
             }
         }
-        return nearestTarget;
+        return target;
     }
 
     public boolean isDead(int health) {
-        if(health <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return health <= 0;
     }
     public void getDamage(int damage) {
         health -= damage;
-        if (health <= 0) { this.setHealth(0); isDead(0); }
-        if (health > maxHealth) { health = maxHealth; }
+        if (health <= 0) this.setHealth(0); isDead(0);
+        if (health > maxHealth) health = maxHealth;
     }
     public String getName() {
         return name;

@@ -4,34 +4,23 @@ import Utilites.BaseChar;
 import java.util.ArrayList;
 
 public class Crossbowman extends BaseChar{
-    private int arrows = 10;
+    private int arrows = 20;
 
     public Crossbowman(String name, int x, int y) {
         super(name, 10, 10, 30,
                 40, 60, true, x, y, 3);
     }
     @Override
-    public void step(ArrayList<BaseChar> enemys) {
-        if (Crossbowman.this.isDead(health)) {
-            System.out.println(this.getInfo() + " умер.");
-            System.out.println("--------------------");
-        } else if (Crossbowman.this.getArrows() <= 0) {
-            System.out.println(this.getInfo() + ": нет стрел.");
-            System.out.println("--------------------");
-        } else {
-            BaseChar target = Crossbowman.this.nearestTarget(enemys);
-            System.out.println(this.getInfo() + ": Цель найдена - " + target.getInfo());
-            attack(target);
-            System.out.println(this.getInfo() + ": Получай, каналья, " + target.getInfo() + "!");
-            System.out.println("--------------------");
-        }
+    public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
+        if (isDead(health) || getArrows() <= 0) return;
+        attack(nearestTarget(enemy));
+        System.out.println("Попался");
     }
 
     private void attack(BaseChar target) {
-        int damage = target.getHealth() / 5;
-        System.out.println("damage - " + damage);
+        int damage = r.nextInt(5);
+        arrows--;
         target.getDamage(damage);
-        this.setArrows(this.getArrows() - 1);
     }
     public int getArrows() {return arrows;}
 

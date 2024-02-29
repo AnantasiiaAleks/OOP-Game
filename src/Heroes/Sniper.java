@@ -5,7 +5,7 @@ import Utilites.BaseChar;
 import java.util.ArrayList;
 
 public class Sniper extends BaseChar {
-    private int bullets = 10;
+    private int bullets = 30;
 
     public Sniper(String name, int x, int y) {
         super(name, 10, 10, 30,
@@ -13,27 +13,16 @@ public class Sniper extends BaseChar {
     }
 
     @Override
-    public void step(ArrayList<BaseChar> enemys) {
-        if (Sniper.this.isDead(health)) {
-            System.out.println(this.getInfo() + " умер.");
-            System.out.println("--------------------");
-        } else if (Sniper.this.getBullets() <= 0) {
-            System.out.println(this.getInfo() + ": нет патронов.");
-            System.out.println("--------------------");
-        } else {
-            BaseChar target = Sniper.this.nearestTarget(enemys);
-            System.out.println(this.getInfo() + ": Цель найдена - " + target.getInfo());
-            attack(target);
-            System.out.println(this.getInfo() + ": Пиф-паф, " + target.getInfo() + "!");
-            System.out.println("--------------------");
-        }
+    public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
+        if (isDead(health) || getBullets() <= 0) return;
+        attack(nearestTarget(enemy));
+        System.out.println("Попался");
     }
 
     private void attack(BaseChar target) {
-        int damage = target.getHealth() / 2;
-        System.out.println("damage - " + damage);
+        int damage = r.nextInt(5);
+        bullets--;
         target.getDamage(damage);
-        this.setBullets(this.getBullets() - 5);
     }
 
     public int getBullets() {return bullets;}

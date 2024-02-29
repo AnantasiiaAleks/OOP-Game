@@ -71,25 +71,22 @@ public class Main {
         teamForRound.addAll(team2);
         teamForRound.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
-        teamForRound.forEach(n -> System.out.println(n.toString()));
+        // teamForRound.forEach(n -> System.out.println(n.toString()));
+        System.out.println("-".repeat(50));
+        Scanner scanner = new Scanner(System.in);
 
-//         Попытка реализации боя (бой идет, видно по возгласам, но пока проблема с балансом)
 
-//        Collections.sort(team1);
-//        Collections.sort(team2);
-//        Queue<BaseChar> round = new ArrayDeque<>();
-//        for (BaseChar tm1: team1) {
-//            for (BaseChar tm2: team2) {
-//                round.add(tm1);
-//                round.add(tm2);
-//            }
-//        }
-//        while(!round.isEmpty()) {
-//            System.out.println("Атакует команда 1");
-//            round.poll().step(team2);
-//            System.out.println("Атакует команда 2");
-//            round.poll().step(team1);
-//        }
+        while (true) {
+            scanner.nextLine();
+
+            for (BaseChar element : teamForRound) {
+                if (team1.contains(element)) element.step(team2, team1);
+                else element.step(team1, team2);
+            }
+
+            teamForRound.forEach(n -> System.out.println(n.toString()));
+        }
+
     }
 
     private static String getName(){
