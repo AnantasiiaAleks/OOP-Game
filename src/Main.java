@@ -4,87 +4,110 @@ import Utilites.*;
 import java.util.*;
 
 public class Main {
+
+    public static ArrayList<BaseChar> holyTeam = new ArrayList<>();
+    public static ArrayList<BaseChar> darkTeam = new ArrayList<>();
+    public static ArrayList<BaseChar> allTeam = new ArrayList<>();
     public static void main(String[] args) {
         int teamCount = 10;
         Random random = new Random();
 
-        ArrayList<BaseChar> team1 = new ArrayList<>();
-        ArrayList<BaseChar> team2 = new ArrayList<>();
-        for (int i = 0; i < teamCount; i++) {
+
+        for (int i = 1; i < teamCount + 1; i++) {
             int variant = random.nextInt(7);
             switch (variant) {
                 case 0:
-                    team1.add(new Crossbowman(getName(), i, 0));
+                    holyTeam.add(new Crossbowman(getName(), i, 1));
                     break;
                 case 1:
-                    team1.add(new Mage(getName(), i, 0));
+                    holyTeam.add(new Mage(getName(), i, 1));
                     break;
                 case 2:
-                    team1.add(new Monk(getName(), i, 0));
+                    holyTeam.add(new Monk(getName(), i, 1));
                     break;
                 case 3:
-                    team1.add(new Peasant(getName(), i, 0));
+                    holyTeam.add(new Peasant(getName(), i, 1));
                     break;
                 case 4:
-                    team1.add(new Rogue(getName(), i, 0));
+                    holyTeam.add(new Rogue(getName(), i, 1));
                     break;
                 case 5:
-                    team1.add(new Sniper(getName(), i, 0));
+                    holyTeam.add(new Sniper(getName(), i, 1));
                     break;
                 case 6:
-                    team1.add(new Spearman(getName(), i, 0));
+                    holyTeam.add(new Spearman(getName(), i, 1));
                     break;
             }
         }
 
-        for (int i = 0; i < teamCount; i++) {
+        for (int i = 1; i < teamCount+1; i++) {
             int variant = random.nextInt(7);
             switch (variant) {
                 case 0:
-                    team2.add(new Crossbowman(getName(), i, 9));
+                    darkTeam.add(new Crossbowman(getName(), i, 10));
                     break;
                 case 1:
-                    team2.add(new Mage(getName(), i, 9));
+                    darkTeam.add(new Mage(getName(), i, 10));
                     break;
                 case 2:
-                    team2.add(new Monk(getName(), i, 9));
+                    darkTeam.add(new Monk(getName(), i, 10));
                     break;
                 case 3:
-                    team2.add(new Peasant(getName(), i, 9));
+                    darkTeam.add(new Peasant(getName(), i, 10));
                     break;
                 case 4:
-                    team2.add(new Rogue(getName(), i, 9));
+                    darkTeam.add(new Rogue(getName(), i, 10));
                     break;
                 case 5:
-                    team2.add(new Sniper(getName(), i, 9));
+                    darkTeam.add(new Sniper(getName(), i, 10));
                     break;
                 case 6:
-                    team2.add(new Spearman(getName(), i, 9));
+                    darkTeam.add(new Spearman(getName(), i, 10));
                     break;
             }
         }
 
         //Реализация сортировки по инициативе:
 
-        List<BaseChar> teamForRound = new ArrayList<>();
-        teamForRound.addAll(team1);
-        teamForRound.addAll(team2);
-        teamForRound.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
-        // teamForRound.forEach(n -> System.out.println(n.toString()));
+
+        allTeam.addAll(holyTeam);
+        allTeam.addAll(darkTeam);
+        allTeam.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
+
+        // allTeam.forEach(n -> System.out.println(n.toString()));
         System.out.println("-".repeat(50));
         Scanner scanner = new Scanner(System.in);
+        boolean flag = true;
 
 
         while (true) {
-            scanner.nextLine();
 
-            for (BaseChar element : teamForRound) {
-                if (team1.contains(element)) element.step(team2, team1);
-                else element.step(team1, team2);
+            View.view();
+            scanner.nextLine();
+            int sumHolyHP = 0;
+            int sumDarkHP = 0;
+            for (BaseChar unit : holyTeam) {
+                sumHolyHP += unit.getHealth();
+            }
+            for (BaseChar unit : darkTeam) {
+                sumDarkHP += unit.getHealth();
+            }
+            if (sumHolyHP == 0) {
+                System.out.println(AnsiColors.ANSI_GREEN + "Победила зеленая команда!");
+                flag = false;
+                break;
+            }
+            if (sumDarkHP == 0) {
+                System.out.println(AnsiColors.ANSI_BLUE + "Победила синяя команда");
+                flag = false;
+                break;
             }
 
-            teamForRound.forEach(n -> System.out.println(n.toString()));
+            for (BaseChar unit : allTeam) {
+                if (holyTeam.contains(unit)) unit.step(darkTeam, holyTeam);
+                else unit.step(holyTeam, darkTeam);
+            }
         }
 
     }

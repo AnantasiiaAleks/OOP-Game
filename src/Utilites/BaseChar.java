@@ -39,20 +39,17 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
     }
     @Override
     public String toString() {
-        return String.format("Class %s name: %s, health: %d, position: (%d, %d), initiative: %d",
-                this.getClass().getSimpleName(), this.getName(), this.getHealth(), position.getX(),
-                position.getY(), this.getInitiative());
+        return name + ", \u2665 " + health;
     }
     public String getInfo() {
-        return "Class " + this.getClass().getSimpleName() + " " + this.getName() +
-                ", health:" + this.getHealth() + "/" + this.getMaxHealth();
+        return "";
     }
 
     public BaseChar nearestTarget(ArrayList<BaseChar> enemys) {
         BaseChar target = null;
-        double minDistance = 10;
+        double minDistance = 100;
         for (BaseChar enemy : enemys) {
-            if (position.getDistance(enemy) < minDistance && !enemy.isDead(enemy.getHealth())) {
+            if (position.getDistance(enemy) < minDistance && enemy.getHealth() > 0) {
                 minDistance = position.getDistance(enemy);
                 target = enemy;
             }
@@ -60,14 +57,14 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
         return target;
     }
 
-    public boolean isDead(int health) {
-        return health <= 0;
-    }
     public void getDamage(int damage) {
         health -= damage;
-        if (health <= 0) this.setHealth(0); isDead(0);
-        if (health > maxHealth) health = maxHealth;
+        if (health < 1) {
+            health = 0;
+        }
+        if (health >= maxHealth) health = maxHealth;
     }
+
     public String getName() {
         return name;
     }

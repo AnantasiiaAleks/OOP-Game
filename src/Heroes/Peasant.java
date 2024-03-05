@@ -4,12 +4,13 @@ import Utilites.BaseChar;
 import Utilites.Position;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Peasant extends BaseChar {
     private int energy = 60;
 
     public Peasant(String name, int x, int y) {
-        super(name, 10, 10, 10,
+        super(name, 50, 50, 10,
                 10, 50, true, x, y, 0);
     }
 
@@ -17,7 +18,6 @@ public class Peasant extends BaseChar {
     public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
         if ((health <= 0) || (Peasant.this.getEnergy() <= 0)) return;
         BaseChar target = super.nearestTarget(enemy);
-        System.out.println("Peasant " + this.getName() + " нашел цель " + target.getName());
         if (position.getDistance(target) < 2.0) {
             attack(target);
             return;
@@ -37,23 +37,21 @@ public class Peasant extends BaseChar {
     }
 
     private void attack(BaseChar target) {
-        int damage = r.nextInt(3);
-        System.out.println("damage - " + damage);
+        int damage =  ThreadLocalRandom.current().nextInt(2, 10);
         target.getDamage(damage);
         this.setEnergy(this.getEnergy() - 1);
     }
 
-
+    public String getInfo() {
+        return "Фермер";
+    }
 
     public int getEnergy() {return energy;}
 
     public void setEnergy(int energy) {this.energy = energy;}
 
-
-//    @Override
-//    public String toString() {
-//        return "Class " + this.getClass().getSimpleName() +
-//                " name: " + name + ", health: " + health;
-//    }
-
+    @Override
+    public String toString() {
+        return super.toString() + ", \uD83D\uDCAA " + energy ;
+    }
 }

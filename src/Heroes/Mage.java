@@ -3,24 +3,24 @@ package Heroes;
 import Utilites.BaseChar;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Mage extends BaseChar {
     private int mana = 30;
 
     public Mage(String name, int x, int y) {
-        super(name, 10, 10, 30,
+        super(name, 40, 40, 30,
                 40, 60, true, x, y, 1);
     }
 
     @Override
     public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
-        if (isDead(health) || getMana() <= 0) return;
+        if (health < 1 || getMana() <= 0) return;
         attack(nearestTarget(enemy));
-        System.out.println("Fire");
     }
 
     private void attack(BaseChar target) {
-        int damage = r.nextInt(5);
+        int damage =  ThreadLocalRandom.current().nextInt(2, 15);
         mana--;
         target.getDamage(damage);
     }
@@ -28,4 +28,16 @@ public class Mage extends BaseChar {
     public int getMana() {return mana;}
 
     public void setMana(int mana) {this.mana = mana;}
+
+    public String getInfo() {
+        return "Ведьмак";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", \u26a1 " + mana;
+    }
 }
+
+
+

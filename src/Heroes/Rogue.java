@@ -4,12 +4,13 @@ import Utilites.BaseChar;
 import Utilites.Position;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Rogue extends BaseChar {
     private int energy = 50;
 
     public Rogue(String name, int x, int y) {
-        super(name, 10, 10, 40,
+        super(name, 45, 45, 40,
                 30, 60, true, x, y, 2);
     }
 
@@ -17,7 +18,6 @@ public class Rogue extends BaseChar {
     public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
         if ((health <= 0) || (Rogue.this.getEnergy() <= 0)) return;
         BaseChar target = super.nearestTarget(enemy);
-        System.out.println("Рога " + this.getName() + " нашел цель " + target.getName());
         if (position.getDistance(target) < 2.0) {
             attack(target);
             return;
@@ -38,8 +38,7 @@ public class Rogue extends BaseChar {
 
 
     private void attack(BaseChar target) {
-        int damage = r.nextInt(5);
-        System.out.println("damage - " + damage);
+        int damage =  ThreadLocalRandom.current().nextInt(2, 15);
         target.getDamage(damage);
         this.setEnergy(this.getEnergy() - 2);
     }
@@ -47,4 +46,13 @@ public class Rogue extends BaseChar {
     public int getEnergy() {return energy;}
 
     public void setEnergy(int energy) {this.energy = energy;}
+
+    public String getInfo() {
+        return "Разбойник";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", \uD83D\uDCAA " + energy ;
+    }
 }

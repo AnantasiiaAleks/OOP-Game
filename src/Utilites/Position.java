@@ -23,12 +23,12 @@ public class Position {
     }
 
     public void setY(int y) { this.y = y; }
-    //    public List<Integer> getPosition(int x, int y) {
-//        List<Integer> pos = new ArrayList<>();
-//        pos.add(x);
-//        pos.add(y);
-//        return pos;
-//    }
+        public List<Integer> getCoords(int x, int y) {
+        List<Integer> pos = new ArrayList<>();
+        pos.add(x);
+        pos.add(y);
+        return pos;
+    }
 
     public Double getDistance (BaseChar target) {
         double targetDistance = 0;
