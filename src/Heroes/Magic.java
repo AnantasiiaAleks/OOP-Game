@@ -17,7 +17,9 @@ public abstract class Magic extends BaseChar {
     @Override
     public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
         if (health < 1 || getMana() <= 0) return;
-        attack(nearestTarget(enemy));
+        BaseChar target = super.nearestTarget(enemy);
+        if(target == null) return;
+        attack(target);
     }
 
     private void attack(BaseChar target) {

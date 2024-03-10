@@ -14,12 +14,21 @@ public abstract class Range extends BaseChar {
     @Override
     public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
         if (health < 1 || getArrows() <= 0) return;
-        attack(nearestTarget(enemy));
+        BaseChar target = super.nearestTarget(enemy);
+        if(target == null) return;
+        attack(target);
+
+        for (BaseChar unit : friends) {
+            if (unit.getInfo().equals("Фермер") && !((Peasant)unit).busy) {
+                ((Peasant) unit).busy = true;
+                return;
+            }
+        }
+        arrows--;
     }
 
     private void attack(BaseChar target) {
         int damage =  ThreadLocalRandom.current().nextInt(2, 15);
-        arrows--;
         target.getDamage(damage);
     }
     public int getArrows() {return arrows;}

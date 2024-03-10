@@ -17,6 +17,7 @@ public abstract class Melee extends BaseChar {
     public void step(ArrayList<BaseChar> enemy, ArrayList<BaseChar> friends) {
         if (health <= 0) return;
         BaseChar target = super.nearestTarget(enemy);
+        if (target == null) return;
         if (position.getDistance(target) < 2.0) {
             attack(target);
             return;
@@ -39,8 +40,5 @@ public abstract class Melee extends BaseChar {
         int damage =  ThreadLocalRandom.current().nextInt(2, 15);
         target.getDamage(damage);
     }
-    @Override
-    public String toString() {
-        return super.toString() + ", \uD83D\uDCAA " + initiative ;
-    }
+
 }
