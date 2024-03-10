@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b27831d7-fe68-4164-812e-0a8fe8641e05" name="Changes" comment="OOP-Game - added: void Step() for meleeUnits.&#10;(Реализован метод step для персонажей ближнего боя: проверка дистанции до ближайшего противника и перемещения по игровому полю в случае необходимости &quot;дойти&quot; до цели.&#10;Изменен метод нанесения урона - вместо части от ХП - рандомное число от 1 до 5)">
-      <change afterPath="$PROJECT_DIR$/src/AnsiColors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View.java" afterDir="false" />
+    <list default="true" id="b27831d7-fe68-4164-812e-0a8fe8641e05" name="Changes" comment="OOP-Game - added: AnsiColors, View&#10;&#10;Прописан выход из игры с поздравлением победившей команды (цвет поздравления также по цвету команды).">
+      <change afterPath="$PROJECT_DIR$/src/Heroes/Magic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Heroes/MeleeUnits/Rogue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Heroes/Range.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Monk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Peasant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Peasant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Rogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Sniper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heroes/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Spearman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heroes/Crossbowman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/RangeUnits/Crossbowman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heroes/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/MagicUnits/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heroes/Monk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/MagicUnits/Monk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heroes/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/Melee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heroes/Sniper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/RangeUnits/Sniper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Heroes/Spearman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Heroes/MeleeUnits/Spearman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utilites/BaseChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/BaseChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilites/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilites/Position.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -148,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709196878424</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="OOP-Game - added: AnsiColors, View&#10;&#10;Прописан выход из игры с поздравлением победившей команды (цвет поздравления также по цвету команды).">
+      <option name="closed" value="true" />
+      <created>1709677509935</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709677509935</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -160,7 +167,8 @@
     <MESSAGE value="OOP-Game - added: interface Step(), attack.&#10;Реализована пошаговая механика (сортировка компаратором по уровню инициативы и объединение команд в очередь)" />
     <MESSAGE value="OOP-Game - added: interface Step(), attack, compareTo.&#10;(Реализовано объединение команд в один лист и сортировка по уровню инициативы, вывод листа в консоль)&#10;(Закомментирована попытка реализации пошагового боя, но пока несбалансировано: ресурс героя заканчивается раньше, чем кого-то добивают, и есть недоработки с очередностью шага)." />
     <MESSAGE value="OOP-Game - added: void Step() for meleeUnits.&#10;(Реализован метод step для персонажей ближнего боя: проверка дистанции до ближайшего противника и перемещения по игровому полю в случае необходимости &quot;дойти&quot; до цели.&#10;Изменен метод нанесения урона - вместо части от ХП - рандомное число от 1 до 5)" />
-    <option name="LAST_COMMIT_MESSAGE" value="OOP-Game - added: void Step() for meleeUnits.&#10;(Реализован метод step для персонажей ближнего боя: проверка дистанции до ближайшего противника и перемещения по игровому полю в случае необходимости &quot;дойти&quot; до цели.&#10;Изменен метод нанесения урона - вместо части от ХП - рандомное число от 1 до 5)" />
+    <MESSAGE value="OOP-Game - added: AnsiColors, View&#10;&#10;Прописан выход из игры с поздравлением победившей команды (цвет поздравления также по цвету команды)." />
+    <option name="LAST_COMMIT_MESSAGE" value="OOP-Game - added: AnsiColors, View&#10;&#10;Прописан выход из игры с поздравлением победившей команды (цвет поздравления также по цвету команды)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

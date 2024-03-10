@@ -28,8 +28,8 @@ public abstract class BaseChar implements Step, Comparable<BaseChar> {
 
     public BaseChar(String name, int x, int y, int initiative) {
         this.name = name;
-        this.health = 100;
-        this.maxHealth = 100;
+        this.health = 50;
+        this.maxHealth = 50;
         this.strength = 20;
         this.aqility = 20;
         this.stamina = 50;

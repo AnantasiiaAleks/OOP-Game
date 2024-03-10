@@ -1,4 +1,10 @@
 import Heroes.*;
+import Heroes.MagicUnits.Mage;
+import Heroes.MagicUnits.Monk;
+import Heroes.MeleeUnits.Rogue;
+import Heroes.MeleeUnits.Spearman;
+import Heroes.RangeUnits.Crossbowman;
+import Heroes.RangeUnits.Sniper;
 import Utilites.*;
 
 import java.util.*;
@@ -14,55 +20,37 @@ public class Main {
 
 
         for (int i = 1; i < teamCount + 1; i++) {
-            int variant = random.nextInt(7);
+            int variant = random.nextInt(4);
             switch (variant) {
                 case 0:
                     holyTeam.add(new Crossbowman(getName(), i, 1));
                     break;
                 case 1:
-                    holyTeam.add(new Mage(getName(), i, 1));
+                    holyTeam.add(new Monk(getName(), i, 1));
                     break;
                 case 2:
-                    holyTeam.add(new Monk(getName(), i, 1));
+                    holyTeam.add(new Spearman(getName(), i, 1));
                     break;
                 case 3:
                     holyTeam.add(new Peasant(getName(), i, 1));
-                    break;
-                case 4:
-                    holyTeam.add(new Rogue(getName(), i, 1));
-                    break;
-                case 5:
-                    holyTeam.add(new Sniper(getName(), i, 1));
-                    break;
-                case 6:
-                    holyTeam.add(new Spearman(getName(), i, 1));
                     break;
             }
         }
 
         for (int i = 1; i < teamCount+1; i++) {
-            int variant = random.nextInt(7);
+            int variant = random.nextInt(4);
             switch (variant) {
                 case 0:
-                    darkTeam.add(new Crossbowman(getName(), i, 10));
+                    darkTeam.add(new Sniper(getName(), i, 10));
                     break;
                 case 1:
                     darkTeam.add(new Mage(getName(), i, 10));
                     break;
                 case 2:
-                    darkTeam.add(new Monk(getName(), i, 10));
+                    darkTeam.add(new Rogue(getName(), i, 10));
                     break;
                 case 3:
                     darkTeam.add(new Peasant(getName(), i, 10));
-                    break;
-                case 4:
-                    darkTeam.add(new Rogue(getName(), i, 10));
-                    break;
-                case 5:
-                    darkTeam.add(new Sniper(getName(), i, 10));
-                    break;
-                case 6:
-                    darkTeam.add(new Spearman(getName(), i, 10));
                     break;
             }
         }
