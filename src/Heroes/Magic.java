@@ -13,8 +13,8 @@ public abstract class Magic extends BaseChar {
     public Magic(String name, int x, int y) {
         super(name, 40, 40, 30,
                 40, 60, true, x, y, 1);
-        mana = 5;
-        maxMana = 5;
+        mana = 10;
+        maxMana = 10;
         flag = false;
 
     }
@@ -38,7 +38,7 @@ public abstract class Magic extends BaseChar {
         if (flag) { mana++; return; }
         if (mana < 2) { mana++; return; }
         healing(healingList.get(0));
-        mana--;
+        mana-=2;
     }
 
     public void healing(BaseChar target) {
